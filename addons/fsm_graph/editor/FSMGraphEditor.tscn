@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://diehibibjuqbg"]
+
+[ext_resource type="Script" uid="uid://ctei75lvsidrv" path="res://addons/fsm_graph/editor/FSMGraphEditor.gd" id="1_yd6nv"]
+[ext_resource type="Script" uid="uid://br13kdcwnnqyy" path="res://addons/fsm_graph/editor/FSMGraphResource.gd" id="2_1s4wt"]
+[ext_resource type="Script" uid="uid://cmp4sonq0snkn" path="res://addons/fsm_graph/editor/FSMStateResource.gd" id="3_kt1yu"]
+[ext_resource type="Script" uid="uid://s7uu71y3um8u" path="res://addons/fsm_graph/editor/FSMTransitionResource.gd" id="4_540kc"]
+
+[sub_resource type="Resource" id="Resource_1s4wt"]
+script = ExtResource("2_1s4wt")
+metadata/_custom_type_script = "uid://br13kdcwnnqyy"
+
+[node name="FSMGraphEditor" type="GraphEdit" unique_id=814687551]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+grid_pattern = 1
+script = ExtResource("1_yd6nv")
+fsm_graph_resource = SubResource("Resource_1s4wt")
+
+[node name="ConnectionPopupMenu" type="PopupMenu" parent="." unique_id=1329530717]
+oversampling_override = 1.0
+item_count = 1
+item_0/text = "Delete"
+item_0/id = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1731408952]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_bottom = 66.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1275357450]
+layout_mode = 2
+
+[node name="LoadButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1064549578]
+layout_mode = 2
+text = "Load"
+
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1840497228]
+layout_mode = 2
+text = "Save"
+
+[connection signal="id_pressed" from="ConnectionPopupMenu" to="." method="_on_connection_popup_menu_id_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]

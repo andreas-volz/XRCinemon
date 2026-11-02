@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://mmfh2mja5771"]
+
+[ext_resource type="Texture2D" uid="uid://bcghfadxwtifp" path="res://addons/fsm_graph/editor/assets/Remove.svg" id="1_fmync"]
+[ext_resource type="Script" uid="uid://duurs2bh8lewi" path="res://addons/fsm_graph/editor/FSMEventGraphMapping.gd" id="1_uo7lo"]
+[ext_resource type="Texture2D" uid="uid://bua0g1fvkw6n2" path="res://addons/fsm_graph/editor/assets/ArrowRight.svg" id="3_ijues"]
+
+[node name="FSMEventGraphMapping" type="HBoxContainer" unique_id=1278084603]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_uo7lo")
+
+[node name="RemoveButton" type="Button" parent="." unique_id=258673118]
+layout_mode = 2
+icon = ExtResource("1_fmync")
+
+[node name="FromEdit" type="LineEdit" parent="." unique_id=528574969]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=780134348]
+layout_mode = 2
+texture = ExtResource("3_ijues")
+stretch_mode = 5
+
+[node name="ToEdit" type="LineEdit" parent="." unique_id=906090203]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="RemoveButton" to="." method="_on_remove_button_pressed"]
+[connection signal="text_changed" from="FromEdit" to="." method="_on_from_edit_text_changed"]
+[connection signal="text_changed" from="ToEdit" to="." method="_on_to_edit_text_changed"]
