@@ -26,7 +26,6 @@ buses/default_bus_layout="uid://b450ctf8qaptq"
 [autoload]
 
 XRToolsUserSettings="*uid://bqgb8i74tm0t"
-GameState="*res://game/game_state.tscn"
 XRToolsRumbleManager="*uid://by853dk86g1qw"
 Services="*uid://bq1ipyrg3a4l4"
 IntentDispatcher="*uid://dfv0btm482fjq"
