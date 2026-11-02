@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://dwr5xml22vbbm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhdf1"]
+bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0, 1, 1)
+
+[resource]
+OptionItemButton/base_type = &"Button"
+OptionItemButton/styles/pressed = SubResource("StyleBoxFlat_yhdf1")

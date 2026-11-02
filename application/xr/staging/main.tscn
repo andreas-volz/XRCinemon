@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c8wx3hdpdrw8p"]
+
+[ext_resource type="PackedScene" uid="uid://c2u2yasyfotxr" path="res://application/xr/staging/persistent_staging.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://bpo7eweam1f62" path="res://application/xr/staging/assets/splash.png" id="2"]
+[ext_resource type="Script" uid="uid://shhk6ax4pxi5" path="res://application/xr/staging/main.gd" id="2_dmefr"]
+
+[node name="MainStaging" unique_id=319480721 instance=ExtResource("1")]
+script = ExtResource("2_dmefr")
+main_scene = "uid://b64v7w5y3yghi"
+prompt_for_continue = false
+
+[node name="LoadingScreen" parent="." index="2"]
+splash_screen = ExtResource("2")

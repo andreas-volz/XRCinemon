@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dpxmus8xbns02"]
+
+[ext_resource type="Shader" uid="uid://babj82a4xaqja" path="res://tests/shaders/eac.gdshader" id="1_ad0b7"]
+[ext_resource type="Script" uid="uid://b11rxlo15ii6n" path="res://tests/EacTest.gd" id="1_hudx4"]
+[ext_resource type="Texture2D" uid="uid://duqian75n8q5a" path="res://tests/assets/eac/bathroom.png" id="2_ad0b7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hudx4"]
+render_priority = 0
+shader = ExtResource("1_ad0b7")
+shader_parameter/video_texture = ExtResource("2_ad0b7")
+shader_parameter/texel_size = Vector2(0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rkaek"]
+material = SubResource("ShaderMaterial_hudx4")
+size = Vector3(10, 10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ui5pw"]
+render_priority = 0
+shader = ExtResource("1_ad0b7")
+shader_parameter/video_texture = ExtResource("2_ad0b7")
+shader_parameter/texel_size = Vector2(0, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3e15b"]
+material = SubResource("ShaderMaterial_ui5pw")
+radius = 5.0
+height = 10.0
+
+[node name="EacTest" type="Node3D" unique_id=999978483]
+script = ExtResource("1_hudx4")
+test_texture = ExtResource("2_ad0b7")
+
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=916620395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.923645, 0, 0)
+mesh = SubResource("BoxMesh_rkaek")
+
+[node name="Sphere" type="MeshInstance3D" parent="." unique_id=388170888]
+mesh = SubResource("SphereMesh_3e15b")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2050931510]
+transform = Transform3D(-0.98419577, -0.062305767, 0.1657618, 0, 0.93605965, 0.3518417, -0.17708467, 0.34628105, -0.92126584, 0, 0, 0)
+fov = 118.8

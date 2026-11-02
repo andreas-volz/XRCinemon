@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bs2to4wivqwcl"]
+
+[ext_resource type="Script" uid="uid://b221bsf2oe1xc" path="res://application/ui/VRFlatControlUI.gd" id="1_aagpp"]
+[ext_resource type="Texture2D" uid="uid://e8eshi08o77x" path="res://application/ui/assets/ArrowUp.svg" id="1_m2m5r"]
+[ext_resource type="Texture2D" uid="uid://bvyqwqpbetf8u" path="res://application/ui/assets/ArrowLeft.svg" id="2_aagpp"]
+[ext_resource type="Texture2D" uid="uid://3okkcgrjblli" path="res://application/ui/assets/PickerCursorBg.svg" id="3_rlsu4"]
+[ext_resource type="Texture2D" uid="uid://jeumkphg3fb0" path="res://application/ui/assets/ArrowRight.svg" id="4_2m4kg"]
+[ext_resource type="Texture2D" uid="uid://cgelwvpisgakf" path="res://application/ui/assets/ArrowDown.svg" id="5_brg37"]
+
+[node name="VRFlatControlUI" type="PanelContainer" unique_id=1982550435]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aagpp")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=298148154]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer" unique_id=253708497]
+layout_mode = 2
+columns = 3
+
+[node name="Spacer0" type="Control" parent="CenterContainer/GridContainer" unique_id=1072029417]
+layout_mode = 2
+
+[node name="ButtonUp" type="Button" parent="CenterContainer/GridContainer" unique_id=1521874180]
+layout_mode = 2
+icon = ExtResource("1_m2m5r")
+icon_alignment = 1
+
+[node name="Spacer1" type="Control" parent="CenterContainer/GridContainer" unique_id=1329278045]
+layout_mode = 2
+
+[node name="ButtonLeft" type="Button" parent="CenterContainer/GridContainer" unique_id=28791428]
+layout_mode = 2
+icon = ExtResource("2_aagpp")
+icon_alignment = 1
+
+[node name="ButtonMiddle" type="Button" parent="CenterContainer/GridContainer" unique_id=2019027951]
+layout_mode = 2
+icon = ExtResource("3_rlsu4")
+icon_alignment = 1
+
+[node name="ButtonRight" type="Button" parent="CenterContainer/GridContainer" unique_id=1188896665]
+layout_mode = 2
+icon = ExtResource("4_2m4kg")
+icon_alignment = 1
+
+[node name="Spacer3" type="Control" parent="CenterContainer/GridContainer" unique_id=1955340768]
+layout_mode = 2
+
+[node name="ButtonDown" type="Button" parent="CenterContainer/GridContainer" unique_id=484958290]
+layout_mode = 2
+icon = ExtResource("5_brg37")
+icon_alignment = 1
+
+[connection signal="pressed" from="CenterContainer/GridContainer/ButtonUp" to="." method="_on_button_up_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer/ButtonLeft" to="." method="_on_button_left_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer/ButtonMiddle" to="." method="_on_button_middle_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer/ButtonRight" to="." method="_on_button_right_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer/ButtonDown" to="." method="_on_button_down_pressed"]

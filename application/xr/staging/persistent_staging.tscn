@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c2u2yasyfotxr"]
+
+[ext_resource type="PackedScene" uid="uid://bnqnnnet4dw12" path="res://addons/godot-xr-tools/staging/staging.tscn" id="1_hov0i"]
+[ext_resource type="Script" uid="uid://xxbtcfs4w1g7" path="res://application/xr/staging/persistent_staging.gd" id="2_h8eqy"]
+
+[node name="PersistentStaging" unique_id=949194316 instance=ExtResource("1_hov0i")]
+script = ExtResource("2_h8eqy")

@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dam8w0vb8xt46"]
+
+[ext_resource type="Texture2D" uid="uid://binhdi7ac21uh" path="res://application/ui/assets/Play.svg" id="1_c4a1h"]
+[ext_resource type="Script" uid="uid://d33m3hs4um5hh" path="res://application/ui/HandControllerUI.gd" id="1_sgmpe"]
+[ext_resource type="Texture2D" uid="uid://7ad170eg351y" path="res://application/ui/assets/Pause.svg" id="2_sgmpe"]
+[ext_resource type="Texture2D" uid="uid://cxm78wpe5lf8v" path="res://application/ui/assets/AudioDown.svg" id="4_ls0uy"]
+[ext_resource type="Texture2D" uid="uid://0imamyrxasp8" path="res://application/ui/assets/AudioUp.svg" id="5_i34oj"]
+
+[node name="HandControllerUI" type="PanelContainer" unique_id=230230315]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sgmpe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=383671160]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1981766724]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=711280409]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+icon = ExtResource("1_c4a1h")
+icon_alignment = 1
+
+[node name="PauseButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=848757518]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+icon = ExtResource("2_sgmpe")
+icon_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=469127356]
+layout_mode = 2
+alignment = 1
+
+[node name="VideoVolumeDown" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=895824675]
+layout_mode = 2
+icon = ExtResource("4_ls0uy")
+
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1462628886]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="VideoVolumeUp" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=825969737]
+layout_mode = 2
+icon = ExtResource("5_i34oj")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/VideoVolumeDown" to="." method="_on_video_volume_down_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/VideoVolumeUp" to="." method="_on_video_volume_up_pressed"]

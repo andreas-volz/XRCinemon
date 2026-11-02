@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://d0c7iytmlk2ix"]
+
+[ext_resource type="Script" uid="uid://c75bbfqrgnagi" path="res://application/3d/rendering/renderer/FlatRenderer.gd" id="1_6uuh0"]
+[ext_resource type="Script" uid="uid://uk0bp87b7h12" path="res://application/3d/rendering/canvas/VideoCanvasPlane.gd" id="3_6uuh0"]
+
+[node name="FlatRenderer" type="Node3D" unique_id=1415300620]
+script = ExtResource("1_6uuh0")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1698357796]
+unique_name_in_owner = true
+own_world_3d = true
+transparent_bg = true
+
+[node name="SubWorld" type="Node3D" parent="SubViewport" unique_id=324347369]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/SubWorld" unique_id=894110726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+keep_aspect = 0
+current = true
+fov = 90.0
+
+[node name="VideoCanvasPlane" type="MeshInstance3D" parent="SubViewport/SubWorld" unique_id=580191636]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
+script = ExtResource("3_6uuh0")
+metadata/_custom_type_script = "uid://uk0bp87b7h12"

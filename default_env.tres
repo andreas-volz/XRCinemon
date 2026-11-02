@@ -1,0 +1,18 @@
+[gd_resource type="Environment" format=3 uid="uid://er867l7dl10j"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qmfyt"]
+
+[sub_resource type="Sky" id="1"]
+sky_material = SubResource("ProceduralSkyMaterial_qmfyt")
+
+[resource]
+background_mode = 1
+sky = SubResource("1")
+sky_rotation = Vector3(0, 2.35619, 0)
+ambient_light_source = 1
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+ssil_enabled = true
+ssil_radius = 6.91
+ssil_intensity = 8.24
+ssil_sharpness = 0.36

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b3nvikn7ycisv"]
+
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="1_5vbp7"]
+[ext_resource type="Script" uid="uid://cjfu28jmrajlo" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="2_i40na"]
+
+[sub_resource type="Resource" id="Resource_i40na"]
+script = ExtResource("2_i40na")
+metadata/_custom_type_script = "uid://cjfu28jmrajlo"
+
+[node name="SpaceCharacter" unique_id=1867539383 instance=ExtResource("1_5vbp7")]
+physics = SubResource("Resource_i40na")

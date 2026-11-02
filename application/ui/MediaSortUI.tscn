@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://c0krj8q3ux321"]
+
+[ext_resource type="Theme" uid="uid://dwr5xml22vbbm" path="res://application/ui/themes/XRCinemonTheme.tres" id="1_5q3e7"]
+[ext_resource type="Script" uid="uid://dwevso646hdky" path="res://application/ui/MediaSortUI.gd" id="1_evk3d"]
+[ext_resource type="Script" uid="uid://jng37xt3y1s0" path="res://common/ui/option_item/OptionItemButton.gd" id="2_5q3e7"]
+[ext_resource type="Script" uid="uid://dbgn13vdjlnlk" path="res://common/ui/option_item/OptionGroup.gd" id="3_50g22"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_5q3e7"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_50g22"]
+
+[node name="MediaSortUI" type="PanelContainer" unique_id=2088634979]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5q3e7")
+script = ExtResource("1_evk3d")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=475731738]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1443236475]
+layout_mode = 2
+
+[node name="MethodContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=740391412]
+layout_mode = 2
+columns = 2
+
+[node name="TitleButton" type="Button" parent="CenterContainer/VBoxContainer/MethodContainer" unique_id=1439459736]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_5q3e7")
+text = "Titel"
+script = ExtResource("2_5q3e7")
+option_id = &"Title"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="LastPlayedButton" type="Button" parent="CenterContainer/VBoxContainer/MethodContainer" unique_id=1309309472]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_5q3e7")
+text = "Zuletzt
+abgespielt"
+script = ExtResource("2_5q3e7")
+option_id = &"LastPlayed"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="PlayCountButton" type="Button" parent="CenterContainer/VBoxContainer/MethodContainer" unique_id=731082428]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_5q3e7")
+text = "Häufigste
+Wiedergaben"
+script = ExtResource("2_5q3e7")
+option_id = &"PlayCount"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="DurationButton" type="Button" parent="CenterContainer/VBoxContainer/MethodContainer" unique_id=873265401]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_5q3e7")
+text = "Dauer"
+script = ExtResource("2_5q3e7")
+option_id = &"Duration"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="MethodOptions" type="Node" parent="CenterContainer/VBoxContainer/MethodContainer" unique_id=613441145 node_paths=PackedStringArray("option_items_link")]
+unique_name_in_owner = true
+script = ExtResource("3_50g22")
+option_items_link = NodePath("..")
+selection_mode = 1
+metadata/_custom_type_script = "uid://dbgn13vdjlnlk"
+
+[node name="DirectionContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1802787037]
+layout_mode = 2
+
+[node name="DescendingButton" type="Button" parent="CenterContainer/VBoxContainer/DirectionContainer" unique_id=964378114]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_50g22")
+text = "Absteigend"
+script = ExtResource("2_5q3e7")
+option_id = &"Descending"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="AscendingButton" type="Button" parent="CenterContainer/VBoxContainer/DirectionContainer" unique_id=981883997]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_50g22")
+text = "Aufsteigend"
+script = ExtResource("2_5q3e7")
+option_id = &"Ascending"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="DirectionOptions" type="Node" parent="CenterContainer/VBoxContainer/DirectionContainer" unique_id=2129468700 node_paths=PackedStringArray("option_items_link")]
+unique_name_in_owner = true
+script = ExtResource("3_50g22")
+option_items_link = NodePath("..")
+selection_mode = 1
+metadata/_custom_type_script = "uid://dbgn13vdjlnlk"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2107808485]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Close"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

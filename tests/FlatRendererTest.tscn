@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dk6pdto1wwxor"]
+
+[ext_resource type="PackedScene" uid="uid://d0c7iytmlk2ix" path="res://application/3d/rendering/renderer/FlatRenderer.tscn" id="1_86t0q"]
+[ext_resource type="Script" uid="uid://dvyyagwmovh85" path="res://tests/FlatRendererTest.gd" id="1_r1qhr"]
+
+[node name="FlatRendererTest" type="PanelContainer" unique_id=1823454187]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r1qhr")
+
+[node name="FlatRenderer" parent="." unique_id=1415300620 instance=ExtResource("1_86t0q")]
+unique_name_in_owner = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2029078167]
+layout_mode = 2
+
+[node name="OutputTexture" type="TextureRect" parent="VBoxContainer" unique_id=304301566]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SaveButton" type="Button" parent="VBoxContainer" unique_id=285367673]
+layout_mode = 2
+text = "Save"
+
+[connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]

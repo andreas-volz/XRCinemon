@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://b64v7w5y3yghi"]
+
+[ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_stue5"]
+[ext_resource type="Script" uid="uid://8aot0c1eg578" path="res://application/controllers/PlaybackController.gd" id="2_10i2b"]
+[ext_resource type="Script" uid="uid://8w4ga8vjyn6u" path="res://application/controllers/SpaceController.gd" id="3_w7chk"]
+[ext_resource type="Script" uid="uid://bu0wh62hoxmw8" path="res://application/controllers/MediaLibraryController.gd" id="4_snc6m"]
+[ext_resource type="Script" uid="uid://d25ghw6yqb38m" path="res://application/controllers/UIController.gd" id="5_o7oo7"]
+[ext_resource type="Resource" uid="uid://b2tsge5h8xql4" path="res://application/state_machine/fsm_graph.tres" id="6_8iul3"]
+[ext_resource type="Script" uid="uid://cxm35u0v06t8k" path="res://application/fsm_adapter/GodotInputEventMapper.gd" id="7_a0iio"]
+[ext_resource type="Script" uid="uid://c2ga18tpqclnk" path="res://application/fsm_adapter/EventBinding.gd" id="8_jpxt5"]
+[ext_resource type="Script" uid="uid://ddvaayxohf66y" path="res://application/fsm_adapter/ButtonEventBinding.gd" id="9_q50qq"]
+[ext_resource type="Script" uid="uid://cag1bld3fektr" path="res://application/HandMotionReaction.gd" id="10_hwsa0"]
+[ext_resource type="PackedScene" uid="uid://ccc5w0y4hxww5" path="res://application/xr/tools_hand/htc_vive_controller_left.tscn" id="11_cvotc"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="12_dclrk"]
+[ext_resource type="Script" uid="uid://cbo31km8ekm4p" path="res://application/fsm_adapter/XRInputEventMapper.gd" id="13_xersc"]
+[ext_resource type="Script" uid="uid://cmljkmg3jt7vs" path="res://common/3d/MotionDetector.gd" id="14_smnq3"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="15_2sthc"]
+[ext_resource type="PackedScene" uid="uid://4hq3s3s787dc" path="res://application/xr/tools_hand/htc_vive_controller_right.tscn" id="16_tclgu"]
+[ext_resource type="Script" uid="uid://ix584cyn21jl" path="res://application/fsm_adapter/VariableEventBinding.gd" id="17_ni58d"]
+[ext_resource type="PackedScene" uid="uid://b3nvikn7ycisv" path="res://application/space/SpaceCharacter.tscn" id="18_1jftv"]
+[ext_resource type="Environment" uid="uid://er867l7dl10j" path="res://default_env.tres" id="19_4saes"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="20_og6u6"]
+[ext_resource type="Script" uid="uid://dnl6fvnpyt3ox" path="res://application/3d/SpatialPlacer.gd" id="21_obq2h"]
+[ext_resource type="PackedScene" uid="uid://di5byqf1m8nin" path="res://application/3d/rendering/renderer/SphereRenderer.tscn" id="22_mtddn"]
+
+[sub_resource type="Resource" id="Resource_17c22"]
+script = ExtResource("9_q50qq")
+input_event = &"menu"
+output_event = &"menu"
+metadata/_custom_type_script = "uid://ddvaayxohf66y"
+
+[sub_resource type="Resource" id="Resource_0av8l"]
+script = ExtResource("9_q50qq")
+input_event = &"grip_click"
+output_event = &"grip_left"
+metadata/_custom_type_script = "uid://ddvaayxohf66y"
+
+[sub_resource type="Resource" id="Resource_ca5uh"]
+script = ExtResource("9_q50qq")
+input_event = &"menu_button"
+output_event = &"menu"
+metadata/_custom_type_script = "uid://ddvaayxohf66y"
+
+[sub_resource type="Resource" id="Resource_34oi5"]
+script = ExtResource("9_q50qq")
+input_event = &"primary_click"
+output_event = &"navigation"
+metadata/_custom_type_script = "uid://ddvaayxohf66y"
+
+[sub_resource type="Resource" id="Resource_x0cmd"]
+script = ExtResource("17_ni58d")
+input_event = &"primary"
+output_event = &"navigation_position"
+metadata/_custom_type_script = "uid://ix584cyn21jl"
+
+[sub_resource type="Resource" id="Resource_hr68s"]
+script = ExtResource("9_q50qq")
+input_event = &"grip_click"
+output_event = &"grip_right"
+metadata/_custom_type_script = "uid://ddvaayxohf66y"
+
+[sub_resource type="FFmpegVideoStream" id="FFmpegVideoStream_gawvq"]
+
+[sub_resource type="FFmpegVideoStream" id="FFmpegVideoStream_34oi5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ca5uh"]
+size = Vector3(2, 2, 2)
+
+[node name="StartZone" unique_id=247723471 instance=ExtResource("1_stue5")]
+
+[node name="PlaybackController" type="Node" parent="." index="0" unique_id=1250430644 node_paths=PackedStringArray("video_stream_player", "preview_video_stream_player")]
+script = ExtResource("2_10i2b")
+video_stream_player = NodePath("../VideoStreamPlayer")
+preview_video_stream_player = NodePath("../PreviewVideoStreamPlayer")
+
+[node name="SpaceController" type="Node" parent="." index="1" unique_id=1035274547 node_paths=PackedStringArray("xr_camera", "xr_origin", "world", "video_stream_player", "space_character", "sphere_renderer")]
+script = ExtResource("3_w7chk")
+xr_camera = NodePath("../XROrigin3D/XRCamera3D")
+xr_origin = NodePath("../XROrigin3D")
+world = NodePath("../World")
+video_stream_player = NodePath("../VideoStreamPlayer")
+space_character = NodePath("../XROrigin3D/SpaceCharacter")
+sphere_renderer = NodePath("../World/SphereRenderer")
+
+[node name="MediaLibraryController" type="Node" parent="." index="2" unique_id=301414381 node_paths=PackedStringArray("video_stream_player")]
+script = ExtResource("4_snc6m")
+video_stream_player = NodePath("../VideoStreamPlayer")
+
+[node name="UIController" type="Node" parent="." index="3" unique_id=110839613 node_paths=PackedStringArray("viewport_screen", "main_ui_spatial_placer")]
+script = ExtResource("5_o7oo7")
+viewport_screen = NodePath("../World/MainUIScreen")
+main_ui_spatial_placer = NodePath("../World/MainUIScreen/SpatialPlacer")
+fsm_graph_test = ExtResource("6_8iul3")
+
+[node name="GodotInputEventMapper" type="Node" parent="." index="4" unique_id=1087976735]
+script = ExtResource("7_a0iio")
+event_bindings = Array[ExtResource("8_jpxt5")]([SubResource("Resource_17c22")])
+
+[node name="HandMotionReaction" type="Node" parent="." index="5" unique_id=455679816 node_paths=PackedStringArray("function_pointer_left", "function_pointer_right", "tool_hand_left", "tool_hand_right")]
+script = ExtResource("10_hwsa0")
+function_pointer_left = NodePath("../XROrigin3D/LeftHand/FunctionPointer")
+function_pointer_right = NodePath("../XROrigin3D/RightHand/FunctionPointer")
+tool_hand_left = NodePath("../XROrigin3D/LeftHand/HTCViveControllerLeft")
+tool_hand_right = NodePath("../XROrigin3D/RightHand/HTCViveControllerRight")
+controller_tranparency = 0.8
+
+[node name="XROrigin3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.495, 0)
+
+[node name="HTCViveControllerLeft" parent="XROrigin3D/LeftHand" index="0" unique_id=1990643697 instance=ExtResource("11_cvotc")]
+
+[node name="FunctionPointer" parent="XROrigin3D/LeftHand" index="1" unique_id=1170973342 instance=ExtResource("12_dclrk")]
+distance = 100.0
+laser_length = 1
+
+[node name="XRInputEventMapper" type="Node" parent="XROrigin3D/LeftHand" index="2" unique_id=51203208]
+script = ExtResource("13_xersc")
+event_bindings = Array[ExtResource("8_jpxt5")]([SubResource("Resource_0av8l")])
+
+[node name="MotionDetector" type="Node3D" parent="XROrigin3D/LeftHand" index="3" unique_id=1414855226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+script = ExtResource("14_smnq3")
+still_time = 3.0
+
+[node name="MovementDirect" parent="XROrigin3D/LeftHand" index="4" unique_id=830351448 instance=ExtResource("15_2sthc")]
+strafe = true
+
+[node name="HTCViveControllerRight" parent="XROrigin3D/RightHand" index="0" unique_id=939331853 instance=ExtResource("16_tclgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0016614199, -0.0153769255, 0)
+
+[node name="FunctionPointer" parent="XROrigin3D/RightHand" index="1" unique_id=341200761 instance=ExtResource("12_dclrk")]
+distance = 100.0
+laser_length = 1
+
+[node name="XRInputEventMapper" type="Node" parent="XROrigin3D/RightHand" index="2" unique_id=624922740]
+script = ExtResource("13_xersc")
+event_bindings = Array[ExtResource("8_jpxt5")]([SubResource("Resource_ca5uh"), SubResource("Resource_34oi5"), SubResource("Resource_x0cmd"), SubResource("Resource_hr68s")])
+
+[node name="MotionDetector" type="Node3D" parent="XROrigin3D/RightHand" index="3" unique_id=1868715275]
+script = ExtResource("14_smnq3")
+still_time = 3.0
+
+[node name="SpaceCharacter" parent="XROrigin3D" index="3" unique_id=1867539383 instance=ExtResource("18_1jftv")]
+
+[node name="World" type="Node3D" parent="." index="7" unique_id=1683158692]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World" index="0" unique_id=2036266532]
+environment = ExtResource("19_4saes")
+
+[node name="MainUIScreen" parent="World" index="1" unique_id=660567731 instance=ExtResource("20_og6u6")]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 2.9809093, -5.354939)
+screen_size = Vector2(3, 3)
+collision_layer = 5242880
+viewport_size = Vector2(812, 812)
+update_mode = 2
+throttle_fps = 15.0
+input_gamepad = true
+unshaded = true
+
+[node name="SpatialPlacer" type="Node3D" parent="World/MainUIScreen" index="3" unique_id=743306976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05626297, -2.1708689)
+script = ExtResource("21_obq2h")
+placement_strategy = 2
+
+[node name="DebugLight" type="OmniLight3D" parent="World" index="2" unique_id=632651841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+visible = false
+omni_range = 144.04
+
+[node name="SphereRenderer" parent="World" index="3" unique_id=1376139594 instance=ExtResource("22_mtddn")]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." index="8" unique_id=146236930]
+offset_right = 1022.0
+offset_bottom = 596.0
+stream = SubResource("FFmpegVideoStream_gawvq")
+autoplay = true
+loop = true
+bus = &"Video"
+
+[node name="PreviewVideoStreamPlayer" type="VideoStreamPlayer" parent="." index="9" unique_id=1020976140]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = SubResource("FFmpegVideoStream_34oi5")
+autoplay = true
+bus = &"NoAudio"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="10" unique_id=1141172817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3719313, -2.3201408)
+visible = false
+mesh = SubResource("BoxMesh_ca5uh")
+
+[node name="SpatialPlacer" type="Node3D" parent="MeshInstance3D" index="0" unique_id=1931211465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.857274)
+script = ExtResource("21_obq2h")
+placement_strategy = 3
+
+[connection signal="motion_changed" from="XROrigin3D/LeftHand/MotionDetector" to="HandMotionReaction" method="_on_motion_detector_left_motion_changed"]
+[connection signal="motion_changed" from="XROrigin3D/RightHand/MotionDetector" to="HandMotionReaction" method="_on_motion_detector_right_motion_changed"]

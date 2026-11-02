@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://di5byqf1m8nin"]
+
+[ext_resource type="Script" uid="uid://bl2iqvyrnf66e" path="res://application/3d/rendering/renderer/SphereRenderer.gd" id="1_bwc2f"]
+[ext_resource type="Script" uid="uid://b6u1gsoju183w" path="res://application/3d/rendering/canvas/VideoCanvasSphere.gd" id="1_yit1p"]
+
+[node name="SphereRenderer" type="Node3D" unique_id=1376139594]
+script = ExtResource("1_bwc2f")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1250297797]
+unique_name_in_owner = true
+own_world_3d = true
+transparent_bg = true
+
+[node name="SubWorld" type="Node3D" parent="SubViewport" unique_id=2119576970]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/SubWorld" unique_id=1960152339]
+unique_name_in_owner = true
+
+[node name="VideoCanvasSphere" type="MeshInstance3D" parent="SubViewport/SubWorld" unique_id=1967926472]
+unique_name_in_owner = true
+script = ExtResource("1_yit1p")
+metadata/_custom_type_script = "uid://b6u1gsoju183w"

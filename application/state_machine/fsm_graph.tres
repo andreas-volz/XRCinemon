@@ -1,0 +1,348 @@
+[gd_resource type="Resource" script_class="FSMGraphResource" format=3 uid="uid://b2tsge5h8xql4"]
+
+[ext_resource type="Script" uid="uid://br13kdcwnnqyy" path="res://addons/fsm_graph/editor/FSMGraphResource.gd" id="1_r88y0"]
+[ext_resource type="Script" uid="uid://cmp4sonq0snkn" path="res://addons/fsm_graph/editor/FSMStateResource.gd" id="2_tdiht"]
+[ext_resource type="Script" uid="uid://d3ed84vjs75h" path="res://addons/fsm_graph/editor/FSMStateEditorResource.gd" id="3_kttp3"]
+[ext_resource type="Script" uid="uid://ocv6ce3q8qn1" path="res://addons/fsm_graph/editor/FSMEventMappingResource.gd" id="4_ewqux"]
+[ext_resource type="Script" uid="uid://bocn0ymcw4wi7" path="res://addons/fsm_graph/editor/FSMEventSlotResource.gd" id="5_l177t"]
+[ext_resource type="PackedScene" uid="uid://c8l5heap7bkx" path="res://application/ui/MediaBrowserUI.tscn" id="6_4f3w1"]
+[ext_resource type="Script" uid="uid://s7uu71y3um8u" path="res://addons/fsm_graph/editor/FSMTransitionResource.gd" id="6_8vv03"]
+[ext_resource type="PackedScene" uid="uid://dum8syabq2kp7" path="res://application/ui/VideoUI.tscn" id="6_lmi1v"]
+[ext_resource type="PackedScene" uid="uid://bivdcpvil1lse" path="res://application/ui/MediaAnnotationUI.tscn" id="8_jmo7h"]
+[ext_resource type="PackedScene" uid="uid://fma7wu55kpqr" path="res://application/ui/MediaImportUI.tscn" id="9_ym2cq"]
+[ext_resource type="PackedScene" uid="uid://c0krj8q3ux321" path="res://application/ui/MediaSortUI.tscn" id="10_wlhab"]
+
+[sub_resource type="Resource" id="Resource_he6la"]
+script = ExtResource("3_kttp3")
+position_offset = Vector2(380, -140)
+size = Vector2(300, 566)
+
+[sub_resource type="Resource" id="Resource_3cjkg"]
+script = ExtResource("5_l177t")
+default = true
+
+[sub_resource type="Resource" id="Resource_narhr"]
+script = ExtResource("2_tdiht")
+title = "Init State"
+inital = true
+event_slots = Array[ExtResource("5_l177t")]([SubResource("Resource_3cjkg")])
+next_event_slot_uid = 1
+editor_data = SubResource("Resource_he6la")
+
+[sub_resource type="Resource" id="Resource_w6rli"]
+script = ExtResource("3_kttp3")
+position_offset = Vector2(1480, 800)
+size = Vector2(300, 731)
+
+[sub_resource type="Resource" id="Resource_jjyn5"]
+script = ExtResource("4_ewqux")
+from_event = &"navigation"
+to_event = &"media_browser_navigation"
+
+[sub_resource type="Resource" id="Resource_mdewm"]
+script = ExtResource("4_ewqux")
+from_event = &"menu"
+to_event = &"travel_video_player"
+
+[sub_resource type="Resource" id="Resource_wx8pu"]
+script = ExtResource("5_l177t")
+default = true
+
+[sub_resource type="Resource" id="Resource_2hdcc"]
+script = ExtResource("5_l177t")
+uid = 1
+id = &"travel_video_player"
+
+[sub_resource type="Resource" id="Resource_sfvke"]
+script = ExtResource("5_l177t")
+uid = 2
+id = &"media_browser_navigation"
+
+[sub_resource type="Resource" id="Resource_hdepr"]
+script = ExtResource("5_l177t")
+uid = 3
+id = &"travel_media_sort"
+
+[sub_resource type="Resource" id="Resource_4druk"]
+script = ExtResource("2_tdiht")
+uid = 1
+title = "Media Browser"
+scene = ExtResource("6_4f3w1")
+event_slots = Array[ExtResource("5_l177t")]([SubResource("Resource_wx8pu"), SubResource("Resource_2hdcc"), SubResource("Resource_sfvke"), SubResource("Resource_hdepr")])
+event_mappings = Array[ExtResource("4_ewqux")]([SubResource("Resource_jjyn5"), SubResource("Resource_mdewm")])
+next_event_slot_uid = 4
+editor_data = SubResource("Resource_w6rli")
+
+[sub_resource type="Resource" id="Resource_ajqhu"]
+script = ExtResource("3_kttp3")
+position_offset = Vector2(520, 980)
+size = Vector2(300.00006, 729)
+
+[sub_resource type="Resource" id="Resource_q5v6a"]
+script = ExtResource("4_ewqux")
+from_event = &"menu"
+to_event = &"travel_video_player"
+
+[sub_resource type="Resource" id="Resource_tohtr"]
+script = ExtResource("5_l177t")
+default = true
+
+[sub_resource type="Resource" id="Resource_ovdd3"]
+script = ExtResource("5_l177t")
+uid = 1
+id = &"travel_video_player"
+
+[sub_resource type="Resource" id="Resource_v4dbp"]
+script = ExtResource("5_l177t")
+uid = 2
+id = &"travel_media_browser"
+
+[sub_resource type="Resource" id="Resource_kttp3"]
+script = ExtResource("5_l177t")
+uid = 3
+id = &"travel_annotation_editor"
+
+[sub_resource type="Resource" id="Resource_jbv8s"]
+script = ExtResource("5_l177t")
+uid = 4
+id = &"travel_media_import"
+
+[sub_resource type="Resource" id="Resource_1hehf"]
+script = ExtResource("2_tdiht")
+uid = 2
+title = "Video Display"
+scene = ExtResource("6_lmi1v")
+event_slots = Array[ExtResource("5_l177t")]([SubResource("Resource_tohtr"), SubResource("Resource_ovdd3"), SubResource("Resource_v4dbp"), SubResource("Resource_kttp3"), SubResource("Resource_jbv8s")])
+event_mappings = Array[ExtResource("4_ewqux")]([SubResource("Resource_q5v6a")])
+next_event_slot_uid = 5
+editor_data = SubResource("Resource_ajqhu")
+
+[sub_resource type="Resource" id="Resource_uxbwe"]
+script = ExtResource("3_kttp3")
+position_offset = Vector2(960, -40)
+size = Vector2(420, 954)
+
+[sub_resource type="Resource" id="Resource_1oy7p"]
+script = ExtResource("4_ewqux")
+from_event = &"menu"
+to_event = &"travel_video_display"
+
+[sub_resource type="Resource" id="Resource_67f7q"]
+script = ExtResource("4_ewqux")
+from_event = &"navigation"
+to_event = &"video_navigation"
+
+[sub_resource type="Resource" id="Resource_0etr1"]
+script = ExtResource("5_l177t")
+default = true
+
+[sub_resource type="Resource" id="Resource_bdjd1"]
+script = ExtResource("5_l177t")
+uid = 1
+id = &"travel_video_display"
+
+[sub_resource type="Resource" id="Resource_75c0i"]
+script = ExtResource("5_l177t")
+uid = 2
+id = &"video_navigation"
+
+[sub_resource type="Resource" id="Resource_t50gg"]
+script = ExtResource("5_l177t")
+uid = 3
+id = &"grip_left"
+
+[sub_resource type="Resource" id="Resource_6yum3"]
+script = ExtResource("5_l177t")
+uid = 4
+id = &"grip_right"
+
+[sub_resource type="Resource" id="Resource_fwsvi"]
+script = ExtResource("2_tdiht")
+uid = 3
+title = "Video Player"
+event_slots = Array[ExtResource("5_l177t")]([SubResource("Resource_0etr1"), SubResource("Resource_bdjd1"), SubResource("Resource_75c0i"), SubResource("Resource_t50gg"), SubResource("Resource_6yum3")])
+event_mappings = Array[ExtResource("4_ewqux")]([SubResource("Resource_1oy7p"), SubResource("Resource_67f7q")])
+next_event_slot_uid = 5
+editor_data = SubResource("Resource_uxbwe")
+
+[sub_resource type="Resource" id="Resource_ewqux"]
+script = ExtResource("3_kttp3")
+position_offset = Vector2(980, 1160)
+size = Vector2(300.00012, 663)
+
+[sub_resource type="Resource" id="Resource_yhc0o"]
+script = ExtResource("4_ewqux")
+from_event = &"menu"
+to_event = &"travel_video_player"
+
+[sub_resource type="Resource" id="Resource_l177t"]
+script = ExtResource("5_l177t")
+default = true
+
+[sub_resource type="Resource" id="Resource_yf7ae"]
+script = ExtResource("5_l177t")
+uid = 1
+id = &"travel_video_display"
+
+[sub_resource type="Resource" id="Resource_k3qe7"]
+script = ExtResource("5_l177t")
+uid = 2
+id = &"travel_video_player"
+
+[sub_resource type="Resource" id="Resource_8vv03"]
+script = ExtResource("2_tdiht")
+uid = 4
+title = "Annotation Editor"
+scene = ExtResource("8_jmo7h")
+event_slots = Array[ExtResource("5_l177t")]([SubResource("Resource_l177t"), SubResource("Resource_yf7ae"), SubResource("Resource_k3qe7")])
+event_mappings = Array[ExtResource("4_ewqux")]([SubResource("Resource_yhc0o")])
+next_event_slot_uid = 3
+editor_data = SubResource("Resource_ewqux")
+
+[sub_resource type="Resource" id="Resource_njdhe"]
+script = ExtResource("3_kttp3")
+position_offset = Vector2(80, 600)
+size = Vector2(300.0004, 630)
+
+[sub_resource type="Resource" id="Resource_o6dk5"]
+script = ExtResource("4_ewqux")
+from_event = &"menu"
+to_event = &"travel_video_player"
+
+[sub_resource type="Resource" id="Resource_ggbmd"]
+script = ExtResource("5_l177t")
+default = true
+
+[sub_resource type="Resource" id="Resource_tc75k"]
+script = ExtResource("5_l177t")
+uid = 1
+id = &"travel_video_player"
+
+[sub_resource type="Resource" id="Resource_5auiq"]
+script = ExtResource("2_tdiht")
+uid = 5
+title = "Media Import"
+scene = ExtResource("9_ym2cq")
+event_slots = Array[ExtResource("5_l177t")]([SubResource("Resource_ggbmd"), SubResource("Resource_tc75k")])
+event_mappings = Array[ExtResource("4_ewqux")]([SubResource("Resource_o6dk5")])
+next_event_slot_uid = 2
+editor_data = SubResource("Resource_njdhe")
+
+[sub_resource type="Resource" id="Resource_2ne6a"]
+script = ExtResource("3_kttp3")
+position_offset = Vector2(2000, 700)
+size = Vector2(300, 663)
+
+[sub_resource type="Resource" id="Resource_v3d2i"]
+script = ExtResource("4_ewqux")
+from_event = &"menu"
+to_event = &"travel_video_player"
+
+[sub_resource type="Resource" id="Resource_xyjhl"]
+script = ExtResource("5_l177t")
+default = true
+
+[sub_resource type="Resource" id="Resource_rwlv0"]
+script = ExtResource("5_l177t")
+uid = 1
+id = &"travel_media_browser"
+
+[sub_resource type="Resource" id="Resource_sm11r"]
+script = ExtResource("5_l177t")
+uid = 2
+id = &"travel_video_player"
+
+[sub_resource type="Resource" id="Resource_8gthu"]
+script = ExtResource("2_tdiht")
+uid = 6
+title = "Media Sort"
+scene = ExtResource("10_wlhab")
+event_slots = Array[ExtResource("5_l177t")]([SubResource("Resource_xyjhl"), SubResource("Resource_rwlv0"), SubResource("Resource_sm11r")])
+event_mappings = Array[ExtResource("4_ewqux")]([SubResource("Resource_v3d2i")])
+next_event_slot_uid = 3
+editor_data = SubResource("Resource_2ne6a")
+
+[sub_resource type="Resource" id="Resource_vs8wa"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_narhr")
+to_state = SubResource("Resource_fwsvi")
+from_event_slot = SubResource("Resource_3cjkg")
+
+[sub_resource type="Resource" id="Resource_oij2k"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_fwsvi")
+to_state = SubResource("Resource_1hehf")
+from_event_slot = SubResource("Resource_bdjd1")
+
+[sub_resource type="Resource" id="Resource_63r8p"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_1hehf")
+to_state = SubResource("Resource_fwsvi")
+from_event_slot = SubResource("Resource_ovdd3")
+
+[sub_resource type="Resource" id="Resource_oewgo"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_1hehf")
+to_state = SubResource("Resource_4druk")
+from_event_slot = SubResource("Resource_v4dbp")
+
+[sub_resource type="Resource" id="Resource_pudkv"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_4druk")
+to_state = SubResource("Resource_fwsvi")
+from_event_slot = SubResource("Resource_2hdcc")
+
+[sub_resource type="Resource" id="Resource_574qa"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_1hehf")
+to_state = SubResource("Resource_8vv03")
+from_event_slot = SubResource("Resource_kttp3")
+
+[sub_resource type="Resource" id="Resource_ot8dh"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_8vv03")
+to_state = SubResource("Resource_1hehf")
+from_event_slot = SubResource("Resource_yf7ae")
+
+[sub_resource type="Resource" id="Resource_8f346"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_8vv03")
+to_state = SubResource("Resource_fwsvi")
+from_event_slot = SubResource("Resource_k3qe7")
+
+[sub_resource type="Resource" id="Resource_xp1wv"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_1hehf")
+to_state = SubResource("Resource_5auiq")
+from_event_slot = SubResource("Resource_jbv8s")
+
+[sub_resource type="Resource" id="Resource_08qc4"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_5auiq")
+to_state = SubResource("Resource_fwsvi")
+from_event_slot = SubResource("Resource_tc75k")
+
+[sub_resource type="Resource" id="Resource_2wtl3"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_4druk")
+to_state = SubResource("Resource_8gthu")
+from_event_slot = SubResource("Resource_hdepr")
+
+[sub_resource type="Resource" id="Resource_20cg0"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_8gthu")
+to_state = SubResource("Resource_4druk")
+from_event_slot = SubResource("Resource_rwlv0")
+
+[sub_resource type="Resource" id="Resource_xijht"]
+script = ExtResource("6_8vv03")
+from_state = SubResource("Resource_8gthu")
+to_state = SubResource("Resource_fwsvi")
+from_event_slot = SubResource("Resource_sm11r")
+
+[resource]
+script = ExtResource("1_r88y0")
+states = Array[ExtResource("2_tdiht")]([SubResource("Resource_narhr"), SubResource("Resource_4druk"), SubResource("Resource_1hehf"), SubResource("Resource_fwsvi"), SubResource("Resource_8vv03"), SubResource("Resource_5auiq"), SubResource("Resource_8gthu")])
+transitions = Array[ExtResource("6_8vv03")]([SubResource("Resource_vs8wa"), SubResource("Resource_oij2k"), SubResource("Resource_63r8p"), SubResource("Resource_oewgo"), SubResource("Resource_pudkv"), SubResource("Resource_574qa"), SubResource("Resource_ot8dh"), SubResource("Resource_8f346"), SubResource("Resource_xp1wv"), SubResource("Resource_08qc4"), SubResource("Resource_2wtl3"), SubResource("Resource_20cg0"), SubResource("Resource_xijht")])
+next_state_uid = 7
+metadata/_custom_type_script = "uid://br13kdcwnnqyy"

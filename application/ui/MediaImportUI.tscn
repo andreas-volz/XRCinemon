@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://fma7wu55kpqr"]
+
+[ext_resource type="Script" uid="uid://doxoyq57qdlm1" path="res://application/ui/MediaImportUI.gd" id="1_oonxr"]
+[ext_resource type="PackedScene" uid="uid://d0c7iytmlk2ix" path="res://application/3d/rendering/renderer/FlatRenderer.tscn" id="2_o1uqg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1uqg"]
+bg_color = Color(1, 0, 0.8096056, 1)
+
+[node name="MediaImportUI" type="PanelContainer" unique_id=1605107172]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oonxr")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=489755474]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1723110923]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="ImportPathLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1781801950]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="ImportProgressBar" type="ProgressBar" parent="CenterContainer/VBoxContainer" unique_id=1756891048]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/fill = SubResource("StyleBoxFlat_o1uqg")
+
+[node name="RecreateButton" type="CheckButton" parent="CenterContainer/VBoxContainer" unique_id=2037131634]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Recreate"
+
+[node name="GuessTagsButton" type="CheckButton" parent="CenterContainer/VBoxContainer" unique_id=1494503763]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Guess tags"
+
+[node name="ImportButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=982885835]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Import"
+
+[node name="FlatRenderer" parent="." unique_id=1415300620 instance=ExtResource("2_o1uqg")]
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ImportButton" to="." method="_on_import_button_pressed"]

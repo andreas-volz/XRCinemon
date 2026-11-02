@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://ccc5w0y4hxww5"]
+
+[ext_resource type="Script" uid="uid://cnwtovj4mqc45" path="res://addons/godot-xr-tools/hands/hand.gd" id="1_qc8pl"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://dl8yf7ipqotd1" path="res://addons/godot-xr-tools/hands/animations/left/hand_blend_tree.tres" id="2_f440b"]
+[ext_resource type="Resource" uid="uid://dertgu7k8alls" path="res://addons/godot-xr-tools/hands/poses/pose_default_left.tres" id="3_jdltt"]
+[ext_resource type="PackedScene" uid="uid://c4nba0qpi0uls" path="res://addons/godot-xr-tools/hands/model/Hand_Nails_low_L.gltf" id="4_fkr3h"]
+[ext_resource type="Material" uid="uid://dy6nhifvvmm73" path="res://addons/godot-xr-tools/hands/materials/caucasian_hand.tres" id="5_eujvv"]
+[ext_resource type="PackedScene" uid="uid://the6y7swe6j0" path="res://addons/godot-xr-tools/hands/animations/left/AnimationPlayer.tscn" id="6_1ic7k"]
+[ext_resource type="PackedScene" uid="uid://cojs5gduqtdr0" path="res://application/xr/tools_hand/assets/controller/htc_vive_controller.glb" id="6_fie6p"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="7_wcqut"]
+[ext_resource type="PackedScene" uid="uid://dam8w0vb8xt46" path="res://application/ui/HandControllerUI.tscn" id="8_84lwj"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6gimx"]
+resource_local_to_scene = true
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p1xn3"]
+viewport_path = NodePath("Hand_Nails_low_L/Armature/Viewport2Din3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jweun"]
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_p1xn3")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j2khb"]
+resource_local_to_scene = true
+size = Vector3(0.1, 0.1, 0.02)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f0cif"]
+animation = &"Grip"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pl7v7"]
+animation = &"Grip"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4pklw"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Little_Distal_L", "Armature/Skeleton3D:Little_Intermediate_L", "Armature/Skeleton3D:Little_Metacarpal_L", "Armature/Skeleton3D:Little_Proximal_L", "Armature/Skeleton3D:Middle_Distal_L", "Armature/Skeleton3D:Middle_Intermediate_L", "Armature/Skeleton3D:Middle_Metacarpal_L", "Armature/Skeleton3D:Middle_Proximal_L", "Armature/Skeleton3D:Ring_Distal_L", "Armature/Skeleton3D:Ring_Intermediate_L", "Armature/Skeleton3D:Ring_Metacarpal_L", "Armature/Skeleton3D:Ring_Proximal_L", "Armature/Skeleton3D:Thumb_Distal_L", "Armature/Skeleton3D:Thumb_Metacarpal_L", "Armature/Skeleton3D:Thumb_Proximal_L", "Armature/Skeleton:Little_Distal_L", "Armature/Skeleton:Little_Intermediate_L", "Armature/Skeleton:Little_Proximal_L", "Armature/Skeleton:Middle_Distal_L", "Armature/Skeleton:Middle_Intermediate_L", "Armature/Skeleton:Middle_Proximal_L", "Armature/Skeleton:Ring_Distal_L", "Armature/Skeleton:Ring_Intermediate_L", "Armature/Skeleton:Ring_Proximal_L", "Armature/Skeleton:Thumb_Distal_L", "Armature/Skeleton:Thumb_Proximal_L"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ark6"]
+animation = &"Grip 5"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_veiwo"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Index_Distal_L", "Armature/Skeleton3D:Index_Intermediate_L", "Armature/Skeleton3D:Index_Metacarpal_L", "Armature/Skeleton3D:Index_Proximal_L", "Armature/Skeleton:Index_Distal_L", "Armature/Skeleton:Index_Intermediate_L", "Armature/Skeleton:Index_Proximal_L"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ettff"]
+graph_offset = Vector2(-536, 11)
+nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_f0cif")
+nodes/ClosedHand1/position = Vector2(-600, 300)
+nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_pl7v7")
+nodes/ClosedHand2/position = Vector2(-360, 300)
+nodes/Grip/node = SubResource("AnimationNodeBlend2_4pklw")
+nodes/Grip/position = Vector2(0, 20)
+nodes/OpenHand/node = SubResource("AnimationNodeAnimation_7ark6")
+nodes/OpenHand/position = Vector2(-600, 100)
+nodes/Trigger/node = SubResource("AnimationNodeBlend2_veiwo")
+nodes/Trigger/position = Vector2(-360, 20)
+node_connections = [&"output", 0, &"Grip", &"Grip", 0, &"Trigger", &"Grip", 1, &"ClosedHand2", &"Trigger", 0, &"OpenHand", &"Trigger", 1, &"ClosedHand1"]
+
+[node name="HTCViveControllerLeft" type="Node3D" unique_id=1990643697]
+script = ExtResource("1_qc8pl")
+hand_blend_tree = ExtResource("2_f440b")
+default_pose = ExtResource("3_jdltt")
+
+[node name="Hand_Nails_low_L" parent="." unique_id=478252240 instance=ExtResource("4_fkr3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, 0, 0.05)
+
+[node name="Skeleton3D" parent="Hand_Nails_low_L/Armature" parent_id_path=PackedInt32Array(478252240, 1717284322) index="0" unique_id=873227260]
+bones/1/rotation = Quaternion(0.323537, -2.5658142e-05, -0.027220426, 0.9458239)
+bones/2/rotation = Quaternion(-0.09044407, -0.04151748, -0.16629349, 0.98104167)
+bones/3/rotation = Quaternion(-0.04661986, 0.02097099, 0.010327632, 0.9986392)
+bones/5/rotation = Quaternion(-0.0012845465, -0.011608094, -0.016825877, 0.99979025)
+bones/6/rotation = Quaternion(0.10292491, -0.009932083, -0.007944166, 0.9946078)
+bones/7/rotation = Quaternion(-0.012859, -0.023610815, -0.32325828, 0.9459289)
+bones/8/rotation = Quaternion(0.012057539, -0.009291937, -0.24747224, 0.96877545)
+bones/10/rotation = Quaternion(-0.035753887, -0.0004000325, 0.0063676415, 0.9993403)
+bones/11/rotation = Quaternion(-0.0026496367, -0.0011447113, -0.12599176, 0.9920271)
+bones/12/rotation = Quaternion(0.039422527, 0.0019339261, -0.22807404, 0.97284347)
+bones/13/rotation = Quaternion(-0.012339468, -0.008812943, -0.28066906, 0.9596848)
+bones/15/rotation = Quaternion(-0.070265576, 0.010190836, -0.024330735, 0.9971795)
+bones/16/rotation = Quaternion(-0.032063447, -0.002236244, -0.06863657, 0.99712384)
+bones/17/rotation = Quaternion(0.025345208, 0.008124622, -0.2490055, 0.9681363)
+bones/18/rotation = Quaternion(0.0025223217, 0.007880732, -0.2432038, 0.9699399)
+bones/20/rotation = Quaternion(-0.09173688, 0.020302717, -0.010182976, 0.9955242)
+bones/21/rotation = Quaternion(-0.06251818, -0.00022572002, -0.115392834, 0.99135065)
+bones/22/rotation = Quaternion(0.058578636, 0.021648303, -0.26990518, 0.9608596)
+bones/23/rotation = Quaternion(0.006871769, -0.0035727466, -0.21195254, 0.97724926)
+
+[node name="Sketchfab_Scene" parent="Hand_Nails_low_L/Armature/Skeleton3D" index="0" unique_id=1201675247 instance=ExtResource("6_fie6p")]
+transform = Transform3D(-0.25, -2.1855694e-08, 9.553427e-16, 0, -1.0927847e-08, -0.25, 2.1855694e-08, -0.25, 1.0927847e-08, -0.167, 0.07, -0.094)
+
+[node name="mesh_Hand_Nails_low_L" parent="Hand_Nails_low_L/Armature/Skeleton3D" index="1" unique_id=941360774]
+visible = false
+surface_material_override/0 = ExtResource("5_eujvv")
+
+[node name="Viewport2Din3D" parent="Hand_Nails_low_L/Armature" parent_id_path=PackedInt32Array(478252240, 1717284322) index="1" unique_id=2025634070 instance=ExtResource("7_wcqut")]
+transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0.026659979, 0.09347085, -0.19199201)
+screen_size = Vector2(0.1, 0.1)
+collision_layer = 5242880
+viewport_size = Vector2(100, 100)
+
+[node name="Viewport" parent="Hand_Nails_low_L/Armature/Viewport2Din3D" index="0" unique_id=1692121467]
+size = Vector2i(100, 100)
+
+[node name="HandControllerUI" parent="Hand_Nails_low_L/Armature/Viewport2Din3D/Viewport" index="0" unique_id=230230315 instance=ExtResource("8_84lwj")]
+
+[node name="Screen" parent="Hand_Nails_low_L/Armature/Viewport2Din3D" index="1" unique_id=1524470990]
+mesh = SubResource("QuadMesh_6gimx")
+surface_material_override/0 = SubResource("StandardMaterial3D_jweun")
+
+[node name="StaticBody3D" parent="Hand_Nails_low_L/Armature/Viewport2Din3D" index="2" unique_id=490483112]
+collision_layer = 5242880
+screen_size = Vector2(0.1, 0.1)
+viewport_size = Vector2(100, 100)
+
+[node name="CollisionShape3D" parent="Hand_Nails_low_L/Armature/Viewport2Din3D/StaticBody3D" index="0" unique_id=1188694153]
+shape = SubResource("BoxShape3D_j2khb")
+
+[node name="AnimationPlayer" parent="Hand_Nails_low_L" unique_id=579533253 instance=ExtResource("6_1ic7k")]
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=447357931]
+root_node = NodePath("../Hand_Nails_low_L")
+tree_root = SubResource("AnimationNodeBlendTree_ettff")
+anim_player = NodePath("../Hand_Nails_low_L/AnimationPlayer")
+parameters/Grip/blend_amount = 0.0
+parameters/Trigger/blend_amount = 0.0
+
+[editable path="Hand_Nails_low_L"]
+[editable path="Hand_Nails_low_L/Armature/Viewport2Din3D"]

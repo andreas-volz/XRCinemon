@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://ic4jm68hqwcv"]
+
+[ext_resource type="Script" uid="uid://b6u1gsoju183w" path="res://application/3d/rendering/canvas/VideoCanvasSphere.gd" id="1_1bkda"]
+[ext_resource type="Shader" uid="uid://b0olldmgkv6ao" path="res://application/3d/shaders/VideoSphereProjection.gdshader" id="1_vnnob"]
+[ext_resource type="Texture2D" uid="uid://clcp6tnhsfcfw" path="res://tests/assets/sphere/SBS_180_4096x2048_1223.jpg" id="2_b2v1k"]
+[ext_resource type="Texture2D" uid="uid://bhm7fulj1f1i5" path="res://tests/assets/sphere/Equirectangular_360_test_image.jpg" id="4_b2v1k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x2mq5"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_vnnob"]
+sky_material = SubResource("ProceduralSkyMaterial_x2mq5")
+
+[sub_resource type="Environment" id="Environment_b2v1k"]
+background_mode = 2
+sky = SubResource("Sky_vnnob")
+tonemap_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnq3g"]
+render_priority = 0
+shader = ExtResource("1_vnnob")
+shader_parameter/video_texture = ExtResource("2_b2v1k")
+shader_parameter/texture_is_srgb = false
+shader_parameter/view_range_theta = Vector2(0.25, 0.75)
+shader_parameter/view_shift_theta = 0.0
+shader_parameter/view_range_phi = Vector2(0, 1)
+shader_parameter/projection_scale = Vector2(2, 1)
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/texel_size = Vector2(0, 0)
+shader_parameter/bg_mode = 0
+shader_parameter/stereo_format = 1
+shader_parameter/projection_format = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_1bkda"]
+material = SubResource("ShaderMaterial_rnq3g")
+radius = 50.0
+height = 100.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rsm6v"]
+render_priority = 0
+shader = ExtResource("1_vnnob")
+shader_parameter/video_texture = ExtResource("4_b2v1k")
+shader_parameter/texture_is_srgb = false
+shader_parameter/view_range_theta = Vector2(0, 1)
+shader_parameter/view_shift_theta = 0.0
+shader_parameter/view_range_phi = Vector2(0, 1)
+shader_parameter/projection_scale = Vector2(1, 1)
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/texel_size = Vector2(0, 0)
+shader_parameter/bg_mode = 0
+shader_parameter/stereo_format = 0
+shader_parameter/projection_format = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_vnnob"]
+material = SubResource("ShaderMaterial_rsm6v")
+radius = 50.0
+height = 100.0
+
+[node name="SphereShaderTest" type="Node3D" unique_id=2016230925]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2105017336]
+environment = SubResource("Environment_b2v1k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=416480681]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="VideoCanvasSphere180" type="MeshInstance3D" parent="." unique_id=574768881]
+mesh = SubResource("SphereMesh_1bkda")
+script = ExtResource("1_1bkda")
+sphere_radius = 50.0
+metadata/_custom_type_script = "uid://b6u1gsoju183w"
+
+[node name="Camera3D" type="Camera3D" parent="VideoCanvasSphere180" unique_id=1313606508]
+transform = Transform3D(0.9563048, 0, -0.2923717, 0, 1, 0, 0.2923717, 0, 0.9563048, 0, 0, 0)
+current = true
+
+[node name="VideoCanvasSphereEquiangular" type="MeshInstance3D" parent="." unique_id=1468955202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -170.62033)
+mesh = SubResource("SphereMesh_vnnob")
+script = ExtResource("1_1bkda")
+sphere_radius = 50.0
+metadata/_custom_type_script = "uid://b6u1gsoju183w"
+
+[node name="Camera3D" type="Camera3D" parent="VideoCanvasSphereEquiangular" unique_id=2051694809]

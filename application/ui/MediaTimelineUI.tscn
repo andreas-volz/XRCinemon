@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c0mautlnw4r6"]
+
+[ext_resource type="Script" uid="uid://b2cfa00vcob1i" path="res://application/ui/MediaTimelineUI.gd" id="1_qf6us"]
+
+[node name="MediaTimelineUI" type="PanelContainer" unique_id=1305085141]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qf6us")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1321944782]
+layout_mode = 2
+
+[node name="CurrentTimeLabel" type="Label" parent="HBoxContainer" unique_id=1288834017]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00:00:00"
+
+[node name="TimeSlider" type="HSlider" parent="HBoxContainer" unique_id=1304801186]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="TotalTimeLabel" type="Label" parent="HBoxContainer" unique_id=1652025344]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00:00:00"
+
+[connection signal="drag_ended" from="HBoxContainer/TimeSlider" to="." method="_on_time_slider_drag_ended"]
+[connection signal="drag_started" from="HBoxContainer/TimeSlider" to="." method="_on_time_slider_drag_started"]

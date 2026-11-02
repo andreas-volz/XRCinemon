@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://clekiv22fb2"]
+
+[ext_resource type="Script" uid="uid://b6n7ggb2ynw1f" path="res://sounds/Music.gd" id="1"]
+
+[node name="Music" type="Node" unique_id=769991599]
+script = ExtResource("1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1354082617]
+volume_db = -17.174
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

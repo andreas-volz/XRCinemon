@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bp77xlwvc0car"]
+
+[ext_resource type="Script" uid="uid://bilicgu8jruob" path="res://application/ui/MediaPreview.gd" id="1_p0plo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0plo"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3553167, 0.3553167, 0.3553167, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+
+[node name="MediaPreview" type="PanelContainer" unique_id=2092257155]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_p0plo")
+script = ExtResource("1_p0plo")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1612689493]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="MediaTextureRect" type="TextureRect" parent="MarginContainer" unique_id=1763581673]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 5
+stretch_mode = 5

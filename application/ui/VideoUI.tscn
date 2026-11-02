@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://dum8syabq2kp7"]
+
+[ext_resource type="Script" uid="uid://c4j62dh41d3wc" path="res://application/ui/VideoUI.gd" id="1_pcd7s"]
+[ext_resource type="Texture2D" uid="uid://csgcnqkacni5x" path="res://application/ui/assets/display/button_cinema.png" id="2_raytq"]
+[ext_resource type="Texture2D" uid="uid://d3o4ugjvlyneo" path="res://application/ui/assets/display/button_plane.png" id="2_u5jub"]
+[ext_resource type="Texture2D" uid="uid://eqra7vay8fyd" path="res://application/ui/assets/display/button_sphere.png" id="3_fx5b3"]
+[ext_resource type="Texture2D" uid="uid://b2lvw3wyr4dpx" path="res://application/ui/assets/display/button_spaceship_bridge.png" id="3_nx8p0"]
+[ext_resource type="Texture2D" uid="uid://w57sesbetimf" path="res://application/ui/assets/display/button_custom.png" id="4_vmyht"]
+[ext_resource type="Texture2D" uid="uid://c3sthwpkbikca" path="res://application/ui/assets/display/button_player_calibrate.png" id="6_huyqo"]
+[ext_resource type="PackedScene" uid="uid://c0mautlnw4r6" path="res://application/ui/MediaTimelineUI.tscn" id="9_sipyc"]
+[ext_resource type="Texture2D" uid="uid://bxp8fmm878rsd" path="res://application/ui/assets/display/button_browser.png" id="10_dxs2l"]
+[ext_resource type="Texture2D" uid="uid://cka4865f165rn" path="res://application/ui/assets/display/button_preview.png" id="11_f3thm"]
+[ext_resource type="Texture2D" uid="uid://dod405b7a5bt2" path="res://application/ui/assets/display/button_annotation.png" id="12_nx8p0"]
+
+[node name="VideoUI" type="CenterContainer" unique_id=866278528]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pcd7s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1001859488]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=862888323]
+layout_mode = 2
+text = "Spaces"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1119653364]
+layout_mode = 2
+
+[node name="CinemaButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1118418690]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+icon = ExtResource("2_raytq")
+expand_icon = true
+
+[node name="SpaceshipButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1212084111]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+icon = ExtResource("3_nx8p0")
+expand_icon = true
+
+[node name="ExperimentalButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=898192851]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+icon = ExtResource("4_vmyht")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1994247338]
+layout_mode = 2
+text = "Space Mode"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1107610753]
+layout_mode = 2
+
+[node name="FlatButton" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=904905048]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+icon = ExtResource("2_u5jub")
+expand_icon = true
+
+[node name="SphereButton" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=336190762]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+icon = ExtResource("3_fx5b3")
+expand_icon = true
+
+[node name="CalibrateHeightButton" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=792414152]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+icon = ExtResource("6_huyqo")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=1234083806]
+layout_mode = 2
+text = "Videos"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer" unique_id=1049096899]
+layout_mode = 2
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer/HBoxContainer4" unique_id=184810079]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+icon = ExtResource("10_dxs2l")
+expand_icon = true
+
+[node name="PreviewButton" type="Button" parent="VBoxContainer/HBoxContainer4" unique_id=346002735]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+icon = ExtResource("11_f3thm")
+expand_icon = true
+
+[node name="AnnotationEditorButton" type="Button" parent="VBoxContainer/HBoxContainer4" unique_id=1548928179]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+icon = ExtResource("12_nx8p0")
+expand_icon = true
+
+[node name="MediaTimelineUI" parent="VBoxContainer" unique_id=1305085141 instance=ExtResource("9_sipyc")]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CinemaButton" to="." method="_on_cinema_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SpaceshipButton" to="." method="_on_spaceship_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ExperimentalButton" to="." method="_on_experimental_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/FlatButton" to="." method="_on_flat_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/SphereButton" to="." method="_on_sphere_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/CalibrateHeightButton" to="." method="_on_calibrate_height_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer4/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer4/PreviewButton" to="." method="_on_preview_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer4/AnnotationEditorButton" to="." method="_on_annotation_editor_button_pressed"]

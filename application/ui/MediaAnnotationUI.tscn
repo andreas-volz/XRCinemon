@@ -1,0 +1,213 @@
+[gd_scene format=3 uid="uid://bivdcpvil1lse"]
+
+[ext_resource type="Script" uid="uid://qve45u4vgr06" path="res://application/ui/MediaAnnotationUI.gd" id="1_7my5m"]
+[ext_resource type="Texture2D" uid="uid://dkwcwdiuvqnyu" path="res://application/ui/assets/display/button_left_right.png" id="1_hmain"]
+[ext_resource type="Texture2D" uid="uid://ck3gqlvt2ahlv" path="res://application/ui/assets/display/button_over_under.png" id="2_a1qlk"]
+[ext_resource type="Texture2D" uid="uid://dwfsjwecspkdy" path="res://application/ui/assets/display/button_one_eye.png" id="3_otdr0"]
+[ext_resource type="Texture2D" uid="uid://d3o4ugjvlyneo" path="res://application/ui/assets/display/button_plane.png" id="4_8jo74"]
+[ext_resource type="Texture2D" uid="uid://bfgkg421ufhrh" path="res://application/ui/assets/display/button_uv_mapping1.png" id="4_cubuj"]
+[ext_resource type="Texture2D" uid="uid://eqra7vay8fyd" path="res://application/ui/assets/display/button_sphere.png" id="5_7my5m"]
+[ext_resource type="Texture2D" uid="uid://pl158mfocihq" path="res://application/ui/assets/display/button_halfsphere.png" id="6_p6gix"]
+[ext_resource type="PackedScene" uid="uid://23ognj60os8r" path="res://application/ui/FilterUI.tscn" id="13_cubuj"]
+[ext_resource type="Script" uid="uid://dbgn13vdjlnlk" path="res://common/ui/option_item/OptionGroup.gd" id="14_eteqo"]
+[ext_resource type="Script" uid="uid://jng37xt3y1s0" path="res://common/ui/option_item/OptionItemButton.gd" id="15_kjdw0"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ivvpo"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_gsrhn"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_4yyre"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6i2p"]
+bg_color = Color(0.072526634, 0.072526634, 0.072526634, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cubuj"]
+bg_color = Color(1, 0, 0.8156863, 1)
+
+[node name="MediaAnnotationUI" type="PanelContainer" unique_id=1923688850]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7my5m")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1631817765]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=2055350705]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1704253966]
+layout_mode = 2
+text = "Projection"
+
+[node name="ProjectionContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=867970628]
+layout_mode = 2
+
+[node name="StandardUVProjButton" type="Button" parent="CenterContainer/VBoxContainer/ProjectionContainer" unique_id=1140099186]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_ivvpo")
+text = "Standard
+UV"
+icon = ExtResource("4_cubuj")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("15_kjdw0")
+option_id = &"StandardUVProjButton"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="EACProjButton" type="Button" parent="CenterContainer/VBoxContainer/ProjectionContainer" unique_id=980173068]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ivvpo")
+text = "Equiangular UV
+(EAC)"
+icon = ExtResource("4_cubuj")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("15_kjdw0")
+option_id = &"EACProjButton"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="ProjectionOptions" type="Node" parent="CenterContainer/VBoxContainer/ProjectionContainer" unique_id=168677399 node_paths=PackedStringArray("option_items_link")]
+unique_name_in_owner = true
+script = ExtResource("14_eteqo")
+option_items_link = NodePath("..")
+selection_mode = 1
+metadata/_custom_type_script = "uid://dbgn13vdjlnlk"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1168366000]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1559215359]
+layout_mode = 2
+text = "Stereo Mode"
+
+[node name="StereoFormatContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=284713599]
+layout_mode = 2
+
+[node name="MonoButton" type="Button" parent="CenterContainer/VBoxContainer/StereoFormatContainer" unique_id=1248190737]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_gsrhn")
+icon = ExtResource("3_otdr0")
+expand_icon = true
+script = ExtResource("15_kjdw0")
+option_id = &"MonoButton"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="SideBySideButton" type="Button" parent="CenterContainer/VBoxContainer/StereoFormatContainer" unique_id=1741664930]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_gsrhn")
+icon = ExtResource("1_hmain")
+expand_icon = true
+script = ExtResource("15_kjdw0")
+option_id = &"SideBySideButton"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="OverUnderButton" type="Button" parent="CenterContainer/VBoxContainer/StereoFormatContainer" unique_id=1319719684]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_gsrhn")
+icon = ExtResource("2_a1qlk")
+expand_icon = true
+script = ExtResource("15_kjdw0")
+option_id = &"OverUnderButton"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="StereoFormatOptions" type="Node" parent="CenterContainer/VBoxContainer/StereoFormatContainer" unique_id=1731284186 node_paths=PackedStringArray("option_items_link")]
+unique_name_in_owner = true
+script = ExtResource("14_eteqo")
+option_items_link = NodePath("..")
+selection_mode = 1
+metadata/_custom_type_script = "uid://dbgn13vdjlnlk"
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1610767920]
+layout_mode = 2
+text = "Virtual Reality Coverage"
+
+[node name="VRCoverageContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1181856981]
+layout_mode = 2
+
+[node name="NoVRButton" type="Button" parent="CenterContainer/VBoxContainer/VRCoverageContainer" unique_id=1299426149]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_4yyre")
+text = "No VR"
+icon = ExtResource("4_8jo74")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("15_kjdw0")
+option_id = &"NoVRButton"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="VR360Button" type="Button" parent="CenterContainer/VBoxContainer/VRCoverageContainer" unique_id=975104629]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_4yyre")
+text = "360°"
+icon = ExtResource("5_7my5m")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("15_kjdw0")
+option_id = &"VR360Button"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="VR180Button" type="Button" parent="CenterContainer/VBoxContainer/VRCoverageContainer" unique_id=610787115]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_type_variation = &"OptionItemButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_4yyre")
+text = "180°"
+icon = ExtResource("6_p6gix")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("15_kjdw0")
+option_id = &"VR180Button"
+metadata/_custom_type_script = "uid://jng37xt3y1s0"
+
+[node name="VRCoverageOptions" type="Node" parent="CenterContainer/VBoxContainer/VRCoverageContainer" unique_id=1076288480 node_paths=PackedStringArray("option_items_link")]
+unique_name_in_owner = true
+physics_interpolation_mode = 2
+script = ExtResource("14_eteqo")
+option_items_link = NodePath("..")
+selection_mode = 1
+metadata/_custom_type_script = "uid://dbgn13vdjlnlk"
+
+[node name="FilterUI" parent="CenterContainer/VBoxContainer" unique_id=1846470512 instance=ExtResource("13_cubuj")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=431045558]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_i6i2p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cubuj")
+text = "Back"
+
+[connection signal="selection_changed" from="CenterContainer/VBoxContainer/ProjectionContainer/ProjectionOptions" to="." method="_on_projection_options_selection_changed"]
+[connection signal="selection_changed" from="CenterContainer/VBoxContainer/StereoFormatContainer/StereoFormatOptions" to="." method="_on_stereo_format_options_selection_changed"]
+[connection signal="selection_changed" from="CenterContainer/VBoxContainer/VRCoverageContainer/VRCoverageOptions" to="." method="_on_vr_coverage_options_selection_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
