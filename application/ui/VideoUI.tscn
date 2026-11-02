@@ -33,12 +33,14 @@ layout_mode = 2
 [node name="CinemaButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1118418690]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+disabled = true
 icon = ExtResource("2_raytq")
 expand_icon = true
 
 [node name="SpaceshipButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1212084111]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+disabled = true
 icon = ExtResource("3_nx8p0")
 expand_icon = true
 

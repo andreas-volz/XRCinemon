@@ -1,16 +1,17 @@
 class_name VideoUI
 extends CenterContainer
 
-const CINEMA_SPACE = preload("uid://cuc2sbx774i8w")
-const SCIFI_BRIDGE_SPACE = preload("uid://b1ycpwxrs2l8i")
-const EXPERIMENTAL_SPACE = preload("uid://6psdq5cfxmdw")
+#const CINEMA_SPACE = preload("uid://cuc2sbx774i8w")
+#const SCIFI_BRIDGE_SPACE = preload("uid://b1ycpwxrs2l8i")
+const DEFAULT_SPACE = preload("uid://6psdq5cfxmdw")
+
 
 func _on_cinema_button_pressed() -> void:
-	IntentDispatcher.handle_intent(Intent.SelectSpace.new(CINEMA_SPACE))
+	#IntentDispatcher.handle_intent(Intent.SelectSpace.new(CINEMA_SPACE))
 	FSMEventGateway.push("travel_video_player")
 
 func _on_spaceship_button_pressed() -> void:
-	IntentDispatcher.handle_intent(Intent.SelectSpace.new(SCIFI_BRIDGE_SPACE))
+	#IntentDispatcher.handle_intent(Intent.SelectSpace.new(SCIFI_BRIDGE_SPACE))
 	FSMEventGateway.push("travel_video_player")
 
 func _on_flat_button_pressed() -> void:
@@ -39,4 +40,4 @@ func _on_calibrate_height_button_pressed() -> void:
 
 
 func _on_experimental_button_pressed() -> void:
-	IntentDispatcher.handle_intent(Intent.SelectSpace.new(EXPERIMENTAL_SPACE))
+	IntentDispatcher.handle_intent(Intent.SelectSpace.new(DEFAULT_SPACE))

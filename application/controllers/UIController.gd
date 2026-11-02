@@ -1,7 +1,7 @@
 class_name UIController
 extends Node
 
-const CINEMA_SPACE = preload("uid://cuc2sbx774i8w")
+const DEFAULT_SPACE = preload("uid://6psdq5cfxmdw")
 
 @export var viewport_screen: XRToolsViewport2DIn3D
 @export var main_ui_spatial_placer: SpatialPlacer
@@ -15,7 +15,7 @@ func _ready() -> void:
 	
 	#set_main_ui_placement_strategy(main_ui_placement_strategy)
 	# TODO: hard code cinema space as initial screen - better do this later in FSM
-	IntentDispatcher.handle_intent(Intent.SelectSpace.new(CINEMA_SPACE))
+	IntentDispatcher.handle_intent(Intent.SelectSpace.new(DEFAULT_SPACE))
 	
 	# TODO this idea was to send some dummy event and transition to the first stable State. But it doesn't work.
 	#FSMEventGateway.push("__init__")
