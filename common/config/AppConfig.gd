@@ -7,11 +7,11 @@ var _cfg := ConfigFile.new()
 func _init(path: String) -> void:
 	_config_path = path
 
-func load():
-	_cfg.load(_config_path)
+func load() -> Error:
+	return _cfg.load(_config_path)
 
-func save():
-	_cfg.save(_config_path)
+func save() -> Error:
+	return _cfg.save(_config_path)
 
 func get_value(section, key, default):
 	return _cfg.get_value(section, key, default)
