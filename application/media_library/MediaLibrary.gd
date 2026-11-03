@@ -34,9 +34,9 @@ func startup():
 		
 	media_descriptors.clear()
 	
+	DirAccess.make_dir_recursive_absolute(preview_cache_dir)
+	
 	load_xcm_from_sources()
-
-	#sort_xcm()
 	
 func load_xcm_from_sources():
 	max_media_id = 0
@@ -61,8 +61,6 @@ func load_xcm_from_path(path: String):
 		#print("preview: ", md.preview)
 		media_descriptors.append(md)
 		max_media_id += 1
-		
-
 		
 func _scan_thread_function(recreate: bool, guess_tags: bool):
 	var ffmpeg_exec_path = "/usr/bin/ffmpeg"
