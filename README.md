@@ -6,7 +6,7 @@ XRCinemon is an open-source VR cinema application built with Godot for browsing 
 
 The project explores a VR-native approach to personal video libraries, combining a virtual cinema with a media browser inspired by applications such as Kodi and Plex.
 
-The goal is to make it easy to browse a collection, preview videos, and watch selected content in different virtual spaces.
+The goal is to make it easy to browse a collection, preview videos, and watch selected content in different virtual spaces. Currently, only the default cinema space is available, with additional spaces planned for the future.
 
 XRCinemon is a work in progress. Features, architecture, and usability are still evolving.
 
